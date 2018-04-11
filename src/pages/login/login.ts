@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController, LoadingController, ToastController } from 'ionic-angular';
 import { BaseUI } from '../../common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
+import { Storage } from '@ionic/storage'
+
 
 /**
  * Generated class for the LoginPage page.
@@ -32,7 +34,8 @@ export class LoginPage extends BaseUI{//子类继承父类
               public viewCtrl:ViewController,
               public loadingCtrl:LoadingController,
               public rest:RestProvider,
-              public toastCtrl:ToastController) {
+              public toastCtrl:ToastController,
+              public storage: Storage) {
     super();//子类调用父类的方法
   }
 
@@ -42,9 +45,13 @@ export class LoginPage extends BaseUI{//子类继承父类
     .subscribe(
       f=>{
         if(f["Status"]=="OK"){
-          //登录成功
-        }else{
+          //登录成功 ,对相关信息的储存 
+          this.storage.set('UserId',f["UserId"]);
           loadding.dismiss();
+          this.dismiss();
+          
+        }else{
+          loadding.present();
           super.showToast(this.toastCtrl,f["StatusContent"])
         }
       },
