@@ -14,6 +14,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class RestProvider {
+  //一些项目所需的
   private apiUrlFeeds = 'https://imoocqa.gugujiankong.com/api/feeds/get';
 
   //account
@@ -41,7 +42,7 @@ export class RestProvider {
 
   /**
    * 
-   * 全局获取HTTP请求的方法
+   * 通过HTTP请求，获取用户手机号和密码，进行登录
    * @private
    * @param {string} url 
    * @returns {Observable < string[] >} 
@@ -57,6 +58,7 @@ export class RestProvider {
     return JSON.parse(body) || {}
   }
 
+  //处理错误信息，并在console中显示
   private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) { //如果错误为response类型

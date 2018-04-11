@@ -12,7 +12,7 @@
     <ion-buttons (click)="dismiss()">
       <button ion-button>
         <span ion-text color="primary" showWhen="ios">取消</span>
-        <ion-icon name="md-close"></ion-icon>
+        <ion-icon name="md-close" showWhen="android"></ion-icon>
       </button>
     </ion-buttons>
   
@@ -38,6 +38,6 @@
     <button ion-button color="primary" block (click)="login()">登录</button>
   </div>
   <div padding text-center>
-      <button ion-button color="primary" outline>没有帐号？注册一个</button>
+      <button ion-button color="primary" outline (click)="pushRegisterPage()">没有帐号？注册一个</button>
     </div>
 </ion-content>
