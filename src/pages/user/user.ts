@@ -18,6 +18,7 @@ import {
 import {
   RestProvider
 } from '../../providers/rest/rest';
+import { HeadfacePage } from '../headface/headface';
 
 
 /**
@@ -53,6 +54,11 @@ export class UserPage extends BaseUI {
   ionViewDidEnter() {
     this.loadUserPage();
   }
+
+  gotoHeadface(){
+    this.navCtrl.push(HeadfacePage);
+  }
+  
   //更改登录状态
   loadUserPage() {
     this.storage.get('UserId').then((val) => {
