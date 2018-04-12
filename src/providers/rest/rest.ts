@@ -94,4 +94,14 @@ export class RestProvider {
     return this.getUrlReturn(this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname)
   }
 
+  //存储问题
+  saveQuestion(userId,title,content){
+    return this.getUrlReturn(this.apiUrlQuestionSave + "?userid="+userId+"&title="+title+"&content="+content)
+  }
+
+  //请求首页的feed流
+  getFeeds():Observable<string[]>{
+    return this.getUrlReturn(this.apiUrlFeeds);
+  }
+
 }

@@ -11,7 +11,7 @@ import {
 } from 'ionic-angular';
 import {
   Storage
-} from '@ionic/storage'
+} from '@ionic/storage';
 import {
   BaseUI
 } from '../../common/baseui';
