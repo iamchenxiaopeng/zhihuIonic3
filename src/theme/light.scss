@@ -1,4 +1,10 @@
 // 全局定义ionic-content的bgc，在variables中导入
-ionic-content {
-    background-color: grey !important;
+ion-content {
+    background-color: rgb(236, 236, 236) !important;
+}
+.marginBottom {
+    margin-bottom: 10px !important;
+}
+.paddingTop{
+    padding-top: 10px !important;
 }

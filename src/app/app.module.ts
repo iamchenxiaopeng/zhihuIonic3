@@ -12,6 +12,7 @@ import { MorePage } from '../pages/more/more';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register'
+import { UserPage } from '../pages/user/user'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,7 +29,8 @@ import { IonicStorageModule } from '@ionic/storage'
     MorePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    UserPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { IonicStorageModule } from '@ionic/storage'
     MorePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    UserPage
   ],
   providers: [
     StatusBar,

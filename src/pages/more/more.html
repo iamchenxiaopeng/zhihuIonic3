@@ -12,7 +12,6 @@
 
 </ion-header>
 
-
 <ion-content>
   <div *ngIf="notLogin">
     <ion-card>
@@ -25,8 +24,14 @@
     </ion-card>
 </div>
 <div *ngIf="logined">
-  <ion-card>
-    已登录
-  </ion-card>
+  <ion-list class="marginTop">
+    <button ion-item (click)="gotoUserPage()">
+      <ion-avatar item-start>
+        <img src="{{headface}}">
+      </ion-avatar>
+      <h2>{{userinfo.UserNickName}}</h2>
+      <p>查看个人主页或编辑资料</p>
+    </button>
+  </ion-list>
 </div>
 </ion-content>

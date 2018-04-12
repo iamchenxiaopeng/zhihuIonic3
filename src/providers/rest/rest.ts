@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class RestProvider {
-  //一些项目所需的
+  //一些项目所需的api
   private apiUrlFeeds = 'https://imoocqa.gugujiankong.com/api/feeds/get';
 
   //account
@@ -43,6 +43,8 @@ export class RestProvider {
   /**
    * 
    * 通过HTTP请求，获取用户手机号和密码，进行登录
+   *此处未对安全性有所考虑，实际应用需要加密
+   * 
    * @private
    * @param {string} url 
    * @returns {Observable < string[] >} 
@@ -72,8 +74,24 @@ export class RestProvider {
     return Observable.throw(errMsg);
   }
 
+  //登录
   login(mobile,password):Observable<string[]>{
     return this.getUrlReturn(this.apiUrlLogin+"?mobile="+mobile+"&password="+password)
+  }
+
+  //注册
+  register(mobile,nickname,password): Observable<string[]>{
+    return this.getUrlReturn(this.apiUrlRegister+"?mobile="+mobile+"&nickname="+nickname+"&password="+password)
+  }
+
+  //获取用户信息
+  getUserInfo(userId):Observable<string[]>{
+    return this.getUrlReturn(this.apiUrlUserInfo + "?userId=" + userId)
+  }
+
+  //更新用户信息
+  updateNickName(userId,nickname):Observable<string[]>{
+    return this.getUrlReturn(this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname)
   }
 
 }

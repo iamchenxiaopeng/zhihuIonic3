@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage'
+import { BaseUI } from '../../common/baseui';
+import { RestProvider } from '../../providers/rest/rest';
+import { UserPage } from '../user/user';
 
 /**
  * Generated class for the MorePage page.
@@ -22,20 +25,29 @@ import { Storage } from '@ionic/storage'
   selector: 'page-more',
   templateUrl: 'more.html',
 })
-export class MorePage {
+export class MorePage extends BaseUI{
   //定义登录状态
   public notLogin : boolean = true;
   public logined : boolean = false;
+  headface: string;
+  userinfo: string[];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public modalCtrl: ModalController,
-              public storage: Storage  
+              public storage: Storage,
+              public loadCtrl: LoadingController,
+              public rest: RestProvider,  
             ) {
+    super();
   }
 
   showModal(){
     let modal = this.modalCtrl.create(LoginPage);
+    // 关闭后的回调(modal关闭不会再次触发页面【ionViewDidEnter】的生命周期)
+    modal.onDidDismiss(()=>{
+      this.loadUserPage();
+    })
     modal.present();
   }
 
@@ -47,13 +59,29 @@ export class MorePage {
   loadUserPage(){
     this.storage.get('UserId').then((val)=>{
       if(val!=null){
-        this.notLogin = false;
-        this.logined = true;
+        //加载用户数据
+        var loading = super.showLoading(this.loadCtrl,'加载中')
+        this.rest.getUserInfo(val)
+        .subscribe(
+          userinfo => {
+            this.userinfo = userinfo;
+            //后面加上new date，给资源文件加上一个后缀，取消缓存效果
+            this.headface = userinfo["UserHeadface"]+"?"+(new Date()).valueOf;
+            this.notLogin = false;
+            this.logined = true;
+            loading.dismiss();
+          }
+        );
       }else{
         this.notLogin = true;
         this.logined = false;
       }
     })
+  }
+
+  //user页面
+  gotoUserPage(){
+    this.navCtrl.push(UserPage);
   }
 
 }

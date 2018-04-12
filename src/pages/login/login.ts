@@ -64,6 +64,7 @@ export class LoginPage extends BaseUI{//子类继承父类（的方法）
   pushRegisterPage(){
     this.navCtrl.push(RegisterPage);
   }
+  
 
   //重要：关闭当前页面（this指向调用者）
   dismiss(){
