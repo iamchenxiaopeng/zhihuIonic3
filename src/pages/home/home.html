@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-searchbar placeholder="helloworld"></ion-searchbar>
-    <ion-icon name="text" class="top_header_message_icon" (tap)="gotoChat()"></ion-icon>
+    <ion-icon name="text" class="top_header_message_icon"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +29,7 @@
       </ion-row>
     </ion-grid>
   </div>
-  <ion-card *ngFor="let f of feeds">
+  <ion-card *ngFor="let f of feeds" (tap)="gotoDetails(f.IdentityId)">
     <ion-item>
       <ion-avatar item-start>
         <img src="{{f.HeadFace}}" alt="">

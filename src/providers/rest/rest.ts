@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 
-@Injectable()
+@Injectable()//可依赖注入的
 export class RestProvider {
   //一些项目所需的api
   private apiUrlFeeds = 'https://imoocqa.gugujiankong.com/api/feeds/get';
@@ -75,33 +75,59 @@ export class RestProvider {
   }
 
   //登录
-  login(mobile,password):Observable<string[]>{
-    return this.getUrlReturn(this.apiUrlLogin+"?mobile="+mobile+"&password="+password)
+  login(mobile, password): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlLogin + "?mobile=" + mobile + "&password=" + password)
   }
 
   //注册
-  register(mobile,nickname,password): Observable<string[]>{
-    return this.getUrlReturn(this.apiUrlRegister+"?mobile="+mobile+"&nickname="+nickname+"&password="+password)
+  register(mobile, nickname, password): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&nickname=" + nickname + "&password=" + password)
   }
 
   //获取用户信息
-  getUserInfo(userId):Observable<string[]>{
+  getUserInfo(userId): Observable < string[] > {
     return this.getUrlReturn(this.apiUrlUserInfo + "?userId=" + userId)
   }
 
   //更新用户信息
-  updateNickName(userId,nickname):Observable<string[]>{
+  updateNickName(userId, nickname): Observable < string[] > {
     return this.getUrlReturn(this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname)
   }
 
   //存储问题
-  saveQuestion(userId,title,content){
-    return this.getUrlReturn(this.apiUrlQuestionSave + "?userid="+userId+"&title="+title+"&content="+content)
+  saveQuestion(userId, title, content) {
+    return this.getUrlReturn(this.apiUrlQuestionSave + "?userid=" + userId + "&title=" + title + "&content=" + content)
+  }
+
+  //获取问题
+  getQuestion(id): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlGetQuestion + "?id=" + id)
+  }
+
+  //传递userid获取当前用户有没有关注当前问题
+  getQuestionWithUser(questionId, userId): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlGetQuestionWithUser + "?id=" + questionId + "&userId=" + userId)
   }
 
   //请求首页的feed流
-  getFeeds():Observable<string[]>{
+  getFeeds(): Observable < string[] > {
     return this.getUrlReturn(this.apiUrlFeeds);
   }
+  //请求qustions
+  getQuestions(): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlQuestionList);
+  }
+
+  //关注
+  saveFavourite(questionId, userId): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlSaveFavourite + "?questionid=" + questionId + "&userid=" + userId)
+  }
+
+  //回答
+  answer(userId, questionId, content): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlAnswer + "?userid=" + userId + "&questionid=" + questionId + "&content=" + content)
+  }
+
+
 
 }
