@@ -88,6 +88,7 @@ import { ChatserviceProvider } from '../providers/chatservice/chatservice';
     FilePath,
     Camera,
     EmojiProvider,
+    ChatserviceProvider,
     ChatserviceProvider
   ]
 })

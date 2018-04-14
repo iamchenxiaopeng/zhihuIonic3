@@ -18,7 +18,7 @@ export abstract class BaseUI{//类要是抽象类(abstract)，才可以继承
     protected showToast(toastCtrl:ToastController,message:string):Toast{
         let toast = toastCtrl.create({
             message:message,
-            duration: 3000,//默认显示的时长
+            duration: 2000,//默认显示的时长
             position:`bottom`
         });
         toast.present();

@@ -32,6 +32,8 @@ export class ChatdetailsPage {
     public chatService: ChatserviceProvider) {
     this.chatUserName = navParams.get('username');
     this.chatUserId = navParams.get('userid');
+    // console.log(this.chatUserName+this.chatUserId);
+    
   }
 
   ionViewDidEnter() {

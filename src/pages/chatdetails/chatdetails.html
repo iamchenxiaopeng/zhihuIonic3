@@ -13,7 +13,7 @@
         <ion-spinner name="dots" *ngIf="m.status === 'pending'"></ion-spinner>
         <div class="msg-detail">
           <div class="msg-info">
-            <!-- <p>{{m.username}}&nbsp;{{m.time | relativetime}}</p> -->
+            <p>{{m.username}}&nbsp;{{m.time }}</p>
           </div>
           <div class="msg-content">
             <p class="line-breaker">{{m.message}}</p>
@@ -25,7 +25,7 @@
   </ion-content>
   
   <ion-footer no-border [style.height]="isOpenEmojiPicker? '255px': '55px'">
-    <ion-grid class="input-wrap">
+    <ion-grid class="input-wrap mooji_slides">
       <ion-row>
         <ion-col col-2>
           <button ion-button clear ion-only item-right (click)="switchEmojiPicker()">

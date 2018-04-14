@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 
-@Injectable()//可依赖注入的
+@Injectable() //可依赖注入的
 export class RestProvider {
   //一些项目所需的api
   private apiUrlFeeds = 'https://imoocqa.gugujiankong.com/api/feeds/get';
@@ -116,6 +116,11 @@ export class RestProvider {
   //请求qustions
   getQuestions(): Observable < string[] > {
     return this.getUrlReturn(this.apiUrlQuestionList);
+  }
+
+  // 获取通知
+  getUserNotifications(userId): Observable < string[] > {
+    return this.getUrlReturn(this.apiUrlUserNotifications + "?userid=" + userId)
   }
 
   //关注

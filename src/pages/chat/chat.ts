@@ -23,7 +23,7 @@ export class ChatPage {
     public navParams: NavParams) {
       this.userinfo = {
         userid: '123321',
-        username: '哈哈机器人'
+        username: '小小机器人'
       }
       this.ChatdetailsPage = ChatdetailsPage;
   }

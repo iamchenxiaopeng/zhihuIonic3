@@ -65,11 +65,11 @@ export class ChatserviceProvider {
     let messageSend: ChatMessage = {
       messageId: id,
       userId: '123321',
-      username: '慕女神',
+      username: '小小机器人',
       userImgUrl: 'http://img.mukewang.com/user/57a322f00001e4ae02560256-40-40.jpg',
       toUserId: message.userId,
       time: Date.now(),
-      message: '你是不是刚才给我发送了「' + message.message + '」？',
+      message: '你是不是刚才给我发送了「' + message.message + '」？我听到了哦',
       status: 'success'
     }
 
